@@ -1,11 +1,13 @@
 package atmg;
 
+import java.awt.Menu;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 // ATM.java
 // Represents an automated teller machine
@@ -26,17 +28,22 @@ public class ATM {
 	private static final int DEPOSIT = 3;
 	private static final int EXIT = 4;
 
-	//public threadclicknf windowthread;
+	public newguilogin nw;
 	public gui1 window;
 	public TransGUI windowT;
 	public Promotion promo;
 	Table table;
 	Promotion p;
 	Thread t;
+	Thread customer;
+	threadinglogin logt = new threadinglogin();
 	ArrayList<StringBuilder> listb;
 	Date d1,d2;
 	ArrayList<Long> Threadarray;
 	int Threadcount;
+	public newguilogin windowlog;
+	public newguimenu windowmenu;
+	newgui gui;
 
 	// no-argument ATM constructor initializes instance variables
 	public ATM() {
@@ -47,19 +54,27 @@ public class ATM {
 		cashDispenser = new CashDispenser(); // create cash dispenser
 		depositSlot = new DepositSlot(); // create deposit slot
 		bankDatabase = new BankDatabase(); // create acct info database
-		window = new gui1();
-		//windowthread = new threadclicknf(1);
-		clickfunction.list.add(window);
+		//window = new gui1();
+		newguilogin nw;
+		//clickfunction.list.add(window);
 		listb = new ArrayList<StringBuilder>();
-		window.setATM(this);
-		
+		//window.setATM(this);
+		windowlog = new newguilogin();
 		table = new Table();
 		windowT = new TransGUI(this, table);
+		windowmenu = new newguimenu();
+		windowmenu.setatm(this, table);
 		p = new Promotion(this);
+		
 
 		// promo = new Promotion(this);
 	} // end no-argument ATM constructor
 
+	public void setgui(newgui gui,Thread t)
+	{
+		this.gui=gui;
+		this.t=t;
+	}
 	public void setbuild(StringBuilder build,ArrayList<Long> Threadarray)
 	{
 		this.Threadarray=Threadarray;
@@ -72,42 +87,48 @@ public class ATM {
 	}
 	public void closeTransGUI() {
 		Threadarray.remove(Threadcount-1);
-		windowT.dispose();
-		window.end();
+		gui.Tabs.setSelectedIndex(0);
+		int j = gui.Tabs.indexOfTab("Thread: "+String.valueOf(t.getId()));
+		gui.Tabs.removeTabAt(j);
 	}
 
 	
 	// start ATM
 	public void run() {
-	
+		gui.textArea.append("thread"+t.getId()+"\n");
 		Threadcount++;
-		window.setVisible(true);
-		//windowthread.Tabs.addTab("panel2",windowthread.gui);
+		nw = new newguilogin();
+		nw.setATM(this,gui,t);
+		nw.initialize();
+		//window.setVisible(true);
+		//windowthread.Tabs.addTab("panel2",gui);
 		this.t= Thread.currentThread();
 		Thread.currentThread().suspend();
+		System.out.println("thread out");
 		//Time difference calculation
+	//	gui.Tabs.
 		System.out.println(Threadarray.size());
 		d2= new Date();// end time
 		long a =(d2.getTime()-d1.getTime()/1000%60);
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Integer diff = (int) (d2.getTime()-d1.getTime())/1000;
 		String diffstring = diff.toString();
-		windowT.textArea.append("***************************************\n");
-		windowT.textArea.append("Logout resumes & stops \nThread                     : " +Thread.currentThread().getId() +"\n"
-		+"Service time            : "+diffstring+" Second's\n");
+		gui.textArea.append("***************************************\n");
+		gui.textArea.append("\n"+"Thread: "+t.getId());
+		gui.textArea.append("\n"+"Service time            : "+diffstring+" Second's\n");
 		System.out.println(diff/1000);
-		windowT.textArea.append("***************************************\n"+"Present Threads running \n");
+		/*gui.textArea.append("***************************************\n"+"Present Threads running \n");
 		for(int i=0;i<Threadarray.size();i++)
 		{
 
-			windowT.textArea.append("Thread                     : "+Threadarray.get(i)+"\n");
-		}
-		try {
+			gui.textArea.append("Thread                     : "+Threadarray.get(i)+"\n");
+		}*/
+		/*try {
 			Thread.currentThread().sleep(10000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		gui.textArea.append("***************************************\n");
 		closeTransGUI();
 		//window.setThread(Thread.currentThread());
 
@@ -115,25 +136,30 @@ public class ATM {
 
 	// attempts to authenticate user against database
 	public void authenticateUser(int accountNumber, int pin) {
-
+		gui.textArea.append("\n\n"+"Cutomer Interface: "+t.getId()+"\n");
+		customer = Thread.currentThread();
 		userAuthenticated = bankDatabase.authenticateUser(accountNumber, pin);
 		//System.out.println(Thread.currentThread().getId());
 		// check whether authentication succeeded
 		if (userAuthenticated) {
 			Threading.Threadlist.add(t.getId());
-			windowT.textArea.append("Current Thread       : " + t.getId()+"\n" );
-			windowT.textArea.append("Present running threads \n");
+			gui.textArea.append("Customer Logs in     : " + t.getId()+"\n" );
+			gui.textArea.append("Present running threads \n");
 			for(int i=0;i<Threadarray.size();i++)
 			{
 				
-				windowT.textArea.append("Thread                     : "+Threadarray.get(i)+"\n");
+				gui.textArea.append("Thread                     : "+Threadarray.get(i)+"\n");
 			}
-			windowT.textArea.append("***************************************\n");
+			gui.textArea.append("***************************************\n");
 			d1 = new Date();// start time
 			currentAccountNumber = accountNumber;// save user's account #
-			window.frame.setVisible(false);
-			windowT.setVisible(true);
+			//getClass().window.setVisible(false);
+			//windowT.setVisible(true);
+			//windowmenu.initialize();
+			logt.setatm(this, table);
+			logt.start();
 			windowT.setThread(t);
+			logt.setlogin( gui, t,windowlog);
 			//System.out.println("authentication atm"+t.getId());
 			//windowT.setthread(t);
 			p.displaypromo();

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class clickfunction {
 
-	static List<gui1> list = new ArrayList<gui1>();
+	static List<newguilogin> list = new ArrayList<newguilogin>();
 	static public Account accounts[]= new Account[100];
 	ATM atmref;
 	create cr;
@@ -22,7 +22,6 @@ public class clickfunction {
 
 	void createlog(int j)
 	{
-		
 		{
 			//int i = 10,j=10;
 			{
@@ -32,25 +31,18 @@ public class clickfunction {
 			System.out.println(accounts[x]);
 		}
 	}
-	static void doAllClicks() {
+	/*static void doAllClicks() {
 		try {
-			for (gui1 gui : list) {
-				gui.btnNewButton.doClick();
+			for (newguilogin gui : list) {
+				newguilogin.doClick();
 
 			}
 
 		} catch (Exception e) {
 
 		}
-		/*
-		 * JOptionPane.showMessageDialog(null, list.get(0).builder+"\n"+
-		 * list.get(1).builder+"\n"+ list.get(2).builder+"\n"+
-		 * list.get(3).builder +"\n"+ list.get(4).builder+"\n"+
-		 * list.get(5).builder+"\n"+ list.get(6).builder+"\n"+
-		 * list.get(7).builder+"\n"+ list.get(8).builder +"\n"+
-		 * list.get(9).builder+"\n");
-		 */
-	}
+		
+	}*/
 
 	static void setlogin() {
 		// gui1 gui = new gui1();

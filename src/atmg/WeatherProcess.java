@@ -6,25 +6,17 @@ import java.io.StringWriter;
 import java.net.URL;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 
     public class WeatherProcess {
 
-        public static void main(String[] args) throws IOException {
+    	weathergui gui;
+    	void setweathergui(weathergui gui)
+    	{
+    		this.gui = gui;
+    	}
 
-            WeatherDisplay disp = new WeatherDisplay();
-
-            Document doc = generateXML("2502265");
-            disp.getConditions(doc);
-
-        }
-
-        public static Document generateXML(String code) throws IOException {
+        public void generateXML(String code) throws IOException {
 
             String url = null;
             String XmlData = null;
@@ -35,13 +27,7 @@ import org.w3c.dom.Document;
             InputStream in = xmlUrl.openStream();
 
             // parsing the XmlUrl
-            Document doc = parse(in);
-
-            return doc;
-
-        }
-
-        public static Document parse(InputStream is) {
+           // Document doc = parse(in);
             Document doc = null;
             DocumentBuilderFactory domFactory;
             DocumentBuilder builder;
@@ -52,10 +38,13 @@ import org.w3c.dom.Document;
                 domFactory.setNamespaceAware(false);
                 builder = domFactory.newDocumentBuilder();
 
-                doc = builder.parse(is);
+                doc = builder.parse(in);
             } catch (Exception ex) {
                 System.err.println("unable to load XML: " + ex);
             }
-            return doc;
+            WeatherDisplay disp = new WeatherDisplay();
+            disp.setweathergui(gui);
+            disp.getConditions(doc);
+
         }
     }

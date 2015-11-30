@@ -1,6 +1,5 @@
 package atmg;
 
-import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -10,7 +9,12 @@ import org.w3c.dom.NodeList;
 
 public class WeatherDisplay {
 
-    static void getConditions(Document doc) {
+	weathergui gui;
+	void setweathergui(weathergui gui)
+	{
+		this.gui = gui;
+	}
+    void getConditions(Document doc) {
 
         String city = null;
         String unit = null;
@@ -40,7 +44,7 @@ public class WeatherDisplay {
 
                             Element e = (Element) n;
                             city = e.getAttribute("city");
-                            System.out.println("The City Is : " + city);
+                            gui.formattedTextField.append("\n\n" + "The City Is : " + city);
 
                         }
                     }
@@ -70,7 +74,7 @@ public class WeatherDisplay {
                         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element e3 = (Element) n3;
-                            System.out.println("The Temperature In " + city
+                            gui.formattedTextField.append("\n" +"The Temperature In " + city
                                     + " Is : " + e3.getAttribute("temp") + " "
                                     + unit);
                         }
@@ -86,8 +90,38 @@ public class WeatherDisplay {
                         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element e4 = (Element) n4;
-                            System.out.println("The Humidity In " + city
+                            gui.formattedTextField.append("\n" +"The Humidity In " + city
                                     + " Is : " + e4.getAttribute("humidity"));
+                        }
+                    }
+                    
+                    NodeList nl5 = eElement
+                            .getElementsByTagName("yweather:condition");
+
+                    for (int tempr = 0; tempr < nl5.getLength(); tempr++) {
+
+                        Node n5 = nl5.item(tempr);
+
+                        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element e5 = (Element) n5;
+                            gui.formattedTextField.append("\n" +"The Condition In " + city
+                                    + " Is : " + e5.getAttribute("text"));
+                        }
+                    }
+                    
+                    NodeList nl6 = eElement
+                            .getElementsByTagName("yweather:forecast");
+
+                    for (int tempr = 0; tempr < nl5.getLength(); tempr++) {
+
+                        Node n6 = nl6.item(tempr);
+
+                        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element e6 = (Element) n6;
+                            gui.formattedTextField.append("\n" +"The Forecast In " + city
+                                    + " Is : " + e6.getAttribute("text"));
                         }
                     }
 
