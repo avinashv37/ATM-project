@@ -1,25 +1,17 @@
 package atmg;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.ScrollPane;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.SpringLayout;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
-import javax.swing.JFormattedTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 
 public class weathergui extends JFrame {
 
@@ -52,15 +44,10 @@ public class weathergui extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	private void groupButton( ) {
-
-		ButtonGroup bg1 = new ButtonGroup( );
-
-		}
+	
 	public weathergui() {
 		WOEID.setweathergui(this);
-		groupButton();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

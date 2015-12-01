@@ -69,7 +69,7 @@ public class PromoSignup extends JFrame {
 	 */
 	public PromoSignup(ATM atm) {
 		this.atmref = atm;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -140,7 +140,7 @@ public class PromoSignup extends JFrame {
 									+ "The promotion which you have selected has not been inputed");
 							list = new ListedPromotion();
 							list.start(currentaccountinfo);
-
+							list.setatm(atmref);
 							// promotion = new Promotion();
 							// promotion.setpromotion(cbk);
 							// promotion.test();

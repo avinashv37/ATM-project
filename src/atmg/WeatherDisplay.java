@@ -1,7 +1,5 @@
 package atmg;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -10,6 +8,9 @@ import org.w3c.dom.NodeList;
 public class WeatherDisplay {
 
 	weathergui gui;
+	String condition;
+	String forecast;
+	StringBuilder builder = new StringBuilder("");
 	void setweathergui(weathergui gui)
 	{
 		this.gui = gui;
@@ -107,6 +108,11 @@ public class WeatherDisplay {
                             Element e5 = (Element) n5;
                             gui.formattedTextField.append("\n" +"The Condition In " + city
                                     + " Is : " + e5.getAttribute("text"));
+                            condition =e5.getAttribute("text");
+                            System.out.println(condition);
+                            //checkbank(condition);
+                            //builder.append(" soon");
+                            //builder.append("\n                       or");
                         }
                     }
                     
@@ -122,14 +128,61 @@ public class WeatherDisplay {
                             Element e6 = (Element) n6;
                             gui.formattedTextField.append("\n" +"The Forecast In " + city
                                     + " Is : " + e6.getAttribute("text"));
+                            //forecast = e6.getAttribute("text");
+                            //checkbank(forecast);
+                            //builder.append(" in some time");
                         }
                     }
 
                 }
             }
+           // JOptionPane.showMessageDialog(null,builder);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    void checkbank(String status)
+    {
+    	if(condition.compareTo("Partly Cloudy")==0)
+        {
+        	builder.append("\n You can go to bank");
+        }
+    	else if(condition.compareTo("Showers Early")==0)
+    	{
+    		builder.append("\n It may start Showering if you start to bank");
+    	}
+    	else if(condition.compareTo("Cloudy")==0)
+        {
+        	builder.append("\n Hurry to bank it may rain");
+        }
+    	else if(condition.compareTo("heavy snow")==0)
+    	{
+    		builder.append("\n avoid going to bank you may face heavy snow");
+    	}
+    	else if(condition.compareTo("clear")==0)
+    	{
+    		builder.append("\n Its a pleasent day you may go to bank");
+    	}
+    	else if(condition.compareTo("fair")==0)
+    	{
+    		builder.append("\n Its a good day you may go to bank");
+    	}
+    	else if(condition.compareTo("Sunny")==0)
+    	{
+    		builder.append("\n Sunny day ahead you may go to bank");
+    	}
+    	else if(condition.compareTo("thundershowers")==0)
+    	{
+    		builder.append("\n Its not safe to go to bank");
+    	}
+    	else if(condition.compareTo("hot")==0)
+    	{
+    		builder.append("\n Its a hot day stay hydrated before you start to bank");
+    	}
+    	else if(condition.compareTo("scattered thunderstorms")==0)
+    	{
+    		builder.append("\n Be carefull if you start to bank");
+    	}
     }
 
 }

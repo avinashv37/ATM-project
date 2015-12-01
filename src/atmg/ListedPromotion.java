@@ -9,6 +9,7 @@ public class ListedPromotion {
 	ArrayList<Integer> Listpromo = new ArrayList<Integer>(10);
 	ArrayList<Integer> Randompromolist;
 	Integer Randompromo;
+	ATM atmref;
 	int randompromoposition;
 	int promo1 = 1, promo2 = 2, promo3 = 3, promo4 = 4, promo5 = 5, promo6 = 6, promo7 = 7, promo8 = 8, promo9 = 9,
 			promo10 = 10;
@@ -23,6 +24,11 @@ public class ListedPromotion {
 	ListedPromotion() {
 		setListedPromotion();
 		getListedPromotion();
+		
+	}
+	public void setatm(ATM obj)
+	{
+		this.atmref = obj;
 	}
 
 	public void setListedPromotion() {

@@ -33,7 +33,7 @@ public class BalanceInquiry extends Transaction {
 			
 
 		} else {
-			windowT.disable();
+			//windowT.disable();
 		}
 
 	} // end method execute

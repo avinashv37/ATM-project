@@ -2,7 +2,6 @@ package atmg;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.InetAddress;
 import java.net.URL;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -12,8 +11,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import atmg.WOEIDfinder.WeatherDisplay;
 
 public class WOEIDfinder {
 

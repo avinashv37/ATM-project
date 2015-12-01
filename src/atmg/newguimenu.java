@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import atmg.TransGUI.threadtransgui;
 import atmg.newguilogin.actionListener;
 
 public class newguimenu {
@@ -16,7 +15,6 @@ public class newguimenu {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private ATM atm;
-	public static TransGUI frame;
 	private PromoSignup promo;
 	private Table data;
 	JButton Withdraw, Deposit,Balance,Report, Promotion,Logout;
@@ -120,6 +118,7 @@ public class newguimenu {
 			{
 				try {
 					promo = new PromoSignup(atm);
+					promo.setLocation(500,200);
 					promo.setVisible(true);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block

@@ -1,5 +1,6 @@
 package atmg;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class threadinglogin implements Runnable {
@@ -13,6 +14,7 @@ public class threadinglogin implements Runnable {
 	   public newguimenu windowmenu = new newguimenu();
 	   private newguilogin login;
 	   private newgui window;
+	   weatherlogindisplay weatherlogin = new weatherlogindisplay();
 	  
 	   public void setatm(ATM obj, Table table)
 		{
@@ -29,6 +31,12 @@ public class threadinglogin implements Runnable {
 
 	   public void run() {  
 		   Thread customer = Thread.currentThread();
+		   try {
+				weatherlogin.generateXML("12771997");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		   windowmenu.setatm(atmref, data);
 		   windowmenu.setlogin( window, t, customer, login);
 		   windowmenu.initialize();

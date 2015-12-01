@@ -1,6 +1,7 @@
 package atmg;
 
 import java.awt.Menu;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,8 +30,6 @@ public class ATM {
 	private static final int EXIT = 4;
 
 	public newguilogin nw;
-	public gui1 window;
-	public TransGUI windowT;
 	public Promotion promo;
 	Table table;
 	Promotion p;
@@ -44,7 +43,7 @@ public class ATM {
 	public newguilogin windowlog;
 	public newguimenu windowmenu;
 	newgui gui;
-
+	WOEIDfinder WOEID = new WOEIDfinder();
 	// no-argument ATM constructor initializes instance variables
 	public ATM() {
 		userAuthenticated = false; // user is not authenticated to start
@@ -61,7 +60,6 @@ public class ATM {
 		//window.setATM(this);
 		windowlog = new newguilogin();
 		table = new Table();
-		windowT = new TransGUI(this, table);
 		windowmenu = new newguimenu();
 		windowmenu.setatm(this, table);
 		p = new Promotion(this);
@@ -142,6 +140,7 @@ public class ATM {
 		//System.out.println(Thread.currentThread().getId());
 		// check whether authentication succeeded
 		if (userAuthenticated) {
+			
 			Threading.Threadlist.add(t.getId());
 			gui.textArea.append("Customer Logs in     : " + t.getId()+"\n" );
 			gui.textArea.append("Present running threads \n");
@@ -158,7 +157,6 @@ public class ATM {
 			//windowmenu.initialize();
 			logt.setatm(this, table);
 			logt.start();
-			windowT.setThread(t);
 			logt.setlogin( gui, t,windowlog);
 			//System.out.println("authentication atm"+t.getId());
 			//windowT.setthread(t);
