@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import javax.sound.midi.MidiDevice.Info;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -54,7 +55,7 @@ public class weatherlogindisplay {
         
         public class WeatherDisplay {
 
-        	weathergui gui;
+			weathergui gui;
         	String condition;
         	String forecast;
         	StringBuilder builder = new StringBuilder("");
@@ -179,7 +180,7 @@ public class weatherlogindisplay {
 
                         }
                     }
-                   JOptionPane.showMessageDialog(null,builder);
+                   JOptionPane.showMessageDialog(null,builder,"Weather",JOptionPane.DEFAULT_OPTION);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

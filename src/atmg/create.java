@@ -1,6 +1,5 @@
 package atmg;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class create extends JFrame {
 
@@ -30,18 +30,7 @@ public class create extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					create frame = new create();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	void setcreate(create cr)
 	{
@@ -76,6 +65,7 @@ public class create extends JFrame {
 		JButton btnCreate = new JButton("Create");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try{
 				String TA1 = textField.getText();
 				user = Integer.parseInt(TA1);
 				String PA1 = textField.getText();
@@ -83,6 +73,11 @@ public class create extends JFrame {
 				click.createlog(j);
 				j++;
 				cr.setVisible(false);
+				}
+				catch(Exception e1)
+				{
+					JOptionPane.showMessageDialog(null, "Password and account number shoudl be integer");
+				}
 			}
 			});
 		btnCreate.setBounds(172, 175, 89, 23);

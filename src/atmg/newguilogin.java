@@ -1,9 +1,7 @@
 package atmg;
 
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,10 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
-import com.sun.javafx.image.impl.ByteIndexed.Getter;
-
-import atmg.newgui.actionListener;
 
 public class newguilogin  {
 	public JPasswordField passwordField;

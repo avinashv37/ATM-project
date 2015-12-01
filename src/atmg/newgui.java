@@ -3,7 +3,6 @@ package atmg;
 import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,12 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.Scrollable;
 import javax.swing.border.TitledBorder;
-import javax.swing.plaf.TabbedPaneUI;
-
-import com.sun.prism.paint.Color;
 
 public class newgui extends JFrame {
 	

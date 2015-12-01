@@ -24,6 +24,7 @@ public class clickfunction {
 	{
 		{
 			//int i = 10,j=10;
+			if (accounts[j]==null)
 			{
 			accounts[j] = new Account(create.user, create.pass, 0, 0);
 			}

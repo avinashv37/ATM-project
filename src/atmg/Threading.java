@@ -2,13 +2,8 @@ package atmg;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 public class Threading implements Runnable {
 	   public Thread t;
-	   private int text1;
-	   private int pass1;
-	   private ATM atmref;
 	   StringBuilder build = new StringBuilder("");
 	   //StringBuilder buildexit = new StringBuilder("");
 	   public static ArrayList<Long> Threadlist = new ArrayList<Long>();

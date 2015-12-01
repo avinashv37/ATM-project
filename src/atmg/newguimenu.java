@@ -1,5 +1,8 @@
 package atmg;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -8,11 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import atmg.newguilogin.actionListener;
-
 public class newguimenu {
 	
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private ATM atm;
 	private PromoSignup promo;
@@ -56,23 +56,68 @@ public class newguimenu {
 		int j = window.Tabs.indexOfTab("Thread: "+String.valueOf(t.getId()));
 		window.Tabs.removeTabAt(j);
 		window.Tabs.add("Thread: "+String.valueOf(t.getId()), guimenu);
+		guimenu.setLayout(new GridBagLayout());
+		GridBagConstraints c= new GridBagConstraints();
+		
 		Balance = new JButton("BALANCE_INQUIRY\r\n");
-		guimenu.add(Balance);
+		c.fill=GridBagConstraints.HORIZONTAL;
+		c.weightx=0.5;
+		c.gridwidth=1;
+		c.gridheight=2;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(0,100,0,100);
+		guimenu.add(Balance,c);
 		
 		Withdraw = new JButton("WITHDRAW\r\n");
-		guimenu.add(Withdraw);
+		c.fill=GridBagConstraints.HORIZONTAL;
+		c.weightx=0.5;
+		c.gridwidth=1;
+		c.gridheight=2;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.insets = new Insets(75,100,0,100);
+		guimenu.add(Withdraw,c);
 		
 		Deposit = new JButton("DEPOSIT\r\n");
-		guimenu.add(Deposit);
+		c.fill=GridBagConstraints.HORIZONTAL;
+		c.weightx=0.5;
+		c.gridwidth=1;
+		c.gridheight=2;
+		c.gridx = 0;
+		c.gridy = 2;
+		c.insets = new Insets(75,100,0,100);
+		guimenu.add(Deposit,c);
 		
 		Report = new JButton("REPORT\r\n");
-		guimenu.add(Report);
+		c.fill=GridBagConstraints.HORIZONTAL;
+		c.weightx=0.5;
+		c.gridwidth=1;
+		c.gridheight=2;
+		c.gridx = 0;
+		c.gridy = 3;
+		c.insets = new Insets(75,100,0,100);
+		guimenu.add(Report,c);
 		
 		Promotion = new JButton("PROMOTION\r\n");
-		guimenu.add(Promotion);
+		c.fill=GridBagConstraints.HORIZONTAL;
+		c.weightx=0.5;
+		c.gridwidth=1;
+		c.gridheight=2;
+		c.gridx = 0;
+		c.gridy = 4;
+		c.insets = new Insets(75,100,0,100);
+		guimenu.add(Promotion,c);
 		
 		Logout = new JButton("LOG OUT\r\n");
-		guimenu.add(Logout);
+		c.fill=GridBagConstraints.HORIZONTAL;
+		c.weightx=0.5;
+		c.gridwidth=1;
+		c.gridheight=2;
+		c.gridx = 0;
+		c.gridy = 5;
+		c.insets = new Insets(75,100,0,100);
+		guimenu.add(Logout,c);
 		
 	actionListener b1 = new actionListener(); 
 		
