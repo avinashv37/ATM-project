@@ -6,44 +6,31 @@ import java.util.List;
 public class clickfunction {
 
 	static List<newguilogin> list = new ArrayList<newguilogin>();
-	static public Account accounts[]= new Account[100];
 	ATM atmref;
 	create cr;
 
 	public clickfunction() {
 		// clickfunction.list = new ArrayList<gui1>();
-		
+
 	}
+
+	void setatm(ATM atmobj) {
+		this.atmref = atmobj;
+	}
+
 	
-	void setatm(ATM atmobj)
-	{
-		this.atmref=atmobj;
-	}
-
-	void createlog(int j)
-	{
-		{
-			//int i = 10,j=10;
-			if (accounts[j]==null)
-			{
-			accounts[j] = new Account(create.user, create.pass, 0, 0);
-			}
-			for(int x=0;x<12;x++)
-			System.out.println(accounts[x]);
-		}
-	}
-	/*static void doAllClicks() {
-		try {
-			for (newguilogin gui : list) {
-				newguilogin.doClick();
-
-			}
-
-		} catch (Exception e) {
-
-		}
-		
-	}*/
+	/*
+	 * static void doAllClicks() { try { for (newguilogin gui : list) {
+	 * newguilogin.doClick();
+	 * 
+	 * }
+	 * 
+	 * } catch (Exception e) {
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
 
 	static void setlogin() {
 		// gui1 gui = new gui1();

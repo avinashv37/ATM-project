@@ -14,97 +14,92 @@ import org.w3c.dom.NodeList;
 
 public class WOEIDfinder {
 
-	 static String WOEID = null;
-	 weathergui gui;
-	 
-	/*public static void main(String[] args) throws IOException {
+	static String WOEID = null;
+	weathergui gui;
 
-       
-		WOEIDfinder find = new WOEIDfinder();
-        find.generateXML("melbourne");
-        
-
-    }*/
-	void setweathergui(weathergui gui)
-	{
+	/*
+	 * public static void main(String[] args) throws IOException {
+	 * 
+	 * 
+	 * WOEIDfinder find = new WOEIDfinder(); find.generateXML("melbourne");
+	 * 
+	 * 
+	 * }
+	 */
+	void setweathergui(weathergui gui) {
 		this.gui = gui;
 	}
 
-    public void generateXML(String city) throws IOException {
+	public void generateXML(String city) throws IOException {
 
-        String url = null;
-        String XmlData = null;
-        
-       
-        // creating the URL
-        url = "http://where.yahooapis.com/v1/places.q('"
-        		+ city
-        		+ "')?appid=dj0yJmk9TWM1UlZJZWJXTUhNJmQ9WVdrOVpXUmpVRmxITm5FbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD02ZA--";
-       
-        URL xmlUrl = new URL(url);
-        InputStream in = xmlUrl.openStream();
+		String url = null;
+		String XmlData = null;
 
-        // parsing the XmlUrl
-        Document doc = null;
-        DocumentBuilderFactory domFactory;
-        DocumentBuilder builder;
+		// creating the URL
+		url = "http://where.yahooapis.com/v1/places.q('" + city
+				+ "')?appid=dj0yJmk9TWM1UlZJZWJXTUhNJmQ9WVdrOVpXUmpVRmxITm5FbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD02ZA--";
 
-        try {
-            domFactory = DocumentBuilderFactory.newInstance();
-            domFactory.setValidating(false);
-            domFactory.setNamespaceAware(false);
-            builder = domFactory.newDocumentBuilder();
+		URL xmlUrl = new URL(url);
+		InputStream in = xmlUrl.openStream();
 
-            doc = builder.parse(in);
-        } catch (Exception ex) {
-            System.err.println("unable to load XML: " + ex);
-        }
-        WeatherDisplay disp = new WeatherDisplay();
-        
-        disp.getConditions(doc);
-        //return doc;
+		// parsing the XmlUrl
+		Document doc = null;
+		DocumentBuilderFactory domFactory;
+		DocumentBuilder builder;
 
-    }
+		try {
+			domFactory = DocumentBuilderFactory.newInstance();
+			domFactory.setValidating(false);
+			domFactory.setNamespaceAware(false);
+			builder = domFactory.newDocumentBuilder();
 
-  
-    public class WeatherDisplay {
+			doc = builder.parse(in);
+		} catch (Exception ex) {
+			System.err.println("unable to load XML: " + ex);
+		}
+		WeatherDisplay disp = new WeatherDisplay();
 
-        void getConditions(Document doc) throws IOException {
+		disp.getConditions(doc);
+		// return doc;
 
-           
-           // String unit = null;
+	}
 
-            try {
+	public class WeatherDisplay {
 
-                doc.getDocumentElement().normalize();
-                
-                //System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+		void getConditions(Document doc) throws IOException {
 
-                NodeList nList = doc.getElementsByTagName("places");
+			// String unit = null;
 
-                for (int temp = 0; temp < nList.getLength(); temp++) {
+			try {
 
-                    Node nNode = nList.item(temp);
+				doc.getDocumentElement().normalize();
 
-                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				// System.out.println("Root element :" +
+				// doc.getDocumentElement().getNodeName());
 
-                        Element eElement = (Element) nNode;
-                        
-                        		WOEID=eElement.getElementsByTagName("woeid").item(0).getTextContent();
-                                System.out.println("The WOEID Is : " +  
-                                WOEID);
-                                
-                                WeatherProcess weather = new WeatherProcess();
-                                weather.setweathergui(gui);
-                                weather. generateXML(WOEID);
-                            }
-                        }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-            
-        }
+				NodeList nList = doc.getElementsByTagName("places");
 
-    }
+				for (int temp = 0; temp < nList.getLength(); temp++) {
+
+					Node nNode = nList.item(temp);
+
+					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+						Element eElement = (Element) nNode;
+
+						WOEID = eElement.getElementsByTagName("woeid").item(0).getTextContent();
+						System.out.println("The WOEID Is : " + WOEID);
+
+						WeatherProcess weather = new WeatherProcess();
+						weather.setweathergui(gui);
+						weather.generateXML(WOEID);
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
 }

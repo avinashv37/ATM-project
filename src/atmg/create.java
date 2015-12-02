@@ -25,21 +25,26 @@ public class create extends JFrame {
 	private JLabel lblUserName;
 	private JLabel lblPassword;
 	create cr;
+	ATM atm;
 	clickfunction click;
-	static int j=10;
+	static int j = 10;
+
 	/**
 	 * Launch the application.
 	 */
-	
 
-	void setcreate(create cr)
-	{
+	void setcreate(create cr) {
 		this.cr = cr;
 	}
-	void setclick(clickfunction click)
-	{
+
+	void setclick(clickfunction click) {
 		this.click = click;
 	}
+	void setatm(ATM obj)
+	{
+		this.atm=obj;
+	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -51,42 +56,40 @@ public class create extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		textField = new JTextField();
 		textField.setBounds(207, 33, 113, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		textField_1.setBounds(207, 94, 113, 20);
 		contentPane.add(textField_1);
-		
+
 		JButton btnCreate = new JButton("Create");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
-				String TA1 = textField.getText();
-				user = Integer.parseInt(TA1);
-				String PA1 = textField.getText();
-				pass = Integer.parseInt(PA1);
-				click.createlog(j);
-				j++;
-				cr.setVisible(false);
-				}
-				catch(Exception e1)
-				{
+				try {
+					String TA1 = textField.getText();
+					user = Integer.parseInt(TA1);
+					String PA1 = textField.getText();
+					pass = Integer.parseInt(PA1);
+					atm.createlog(j);
+					j++;
+					cr.setVisible(false);
+				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "Password and account number shoudl be integer");
 				}
 			}
-			});
+		});
 		btnCreate.setBounds(172, 175, 89, 23);
 		contentPane.add(btnCreate);
-		
+
 		lblUserName = new JLabel("User name");
 		lblUserName.setBounds(65, 36, 64, 14);
 		contentPane.add(lblUserName);
-		
+
 		lblPassword = new JLabel("Password");
 		lblPassword.setBounds(65, 97, 64, 14);
 		contentPane.add(lblPassword);

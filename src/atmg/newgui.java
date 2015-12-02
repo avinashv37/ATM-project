@@ -38,6 +38,7 @@ public class newgui extends JFrame {
 	Threading threader ;
 	TitledBorder title;
 	actionListener action;
+	ATM atm = new ATM();
 	public static void main(String[] args) {
 		newgui tf = new newgui();
 		tf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,6 +51,8 @@ public class newgui extends JFrame {
 	{
 		System.out.println(a);
 	}
+	
+	
 	
 	public newgui() {
 		super("ATM");
@@ -166,6 +169,7 @@ public class newgui extends JFrame {
 			{
 				threader = new Threading();
 				threader.setnewgui(gui);
+				threader.setatm(atm);
 				threader.start();
 				//Tabs.addTab("panel2", gui);
 				//nw = new newguilogin();
@@ -182,6 +186,8 @@ public class newgui extends JFrame {
 			}
 			if(src.equals(createlogin))
 			{
+				//cr.setatm(atm);
+				cr.setatm(atm);
 				cr.setVisible(true);
 				cr.setcreate(cr);
 				cr.setclick(click);

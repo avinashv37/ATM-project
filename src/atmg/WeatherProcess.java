@@ -8,43 +8,43 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 
-    public class WeatherProcess {
+public class WeatherProcess {
 
-    	weathergui gui;
-    	void setweathergui(weathergui gui)
-    	{
-    		this.gui = gui;
-    	}
+	weathergui gui;
 
-        public void generateXML(String code) throws IOException {
+	void setweathergui(weathergui gui) {
+		this.gui = gui;
+	}
 
-            String url = null;
-            String XmlData = null;
+	public void generateXML(String code) throws IOException {
 
-            // creating the URL
-            url = "http://weather.yahooapis.com/forecastrss?w=" + code;
-            URL xmlUrl = new URL(url);
-            InputStream in = xmlUrl.openStream();
+		String url = null;
+		String XmlData = null;
 
-            // parsing the XmlUrl
-           // Document doc = parse(in);
-            Document doc = null;
-            DocumentBuilderFactory domFactory;
-            DocumentBuilder builder;
+		// creating the URL
+		url = "http://weather.yahooapis.com/forecastrss?w=" + code;
+		URL xmlUrl = new URL(url);
+		InputStream in = xmlUrl.openStream();
 
-            try {
-                domFactory = DocumentBuilderFactory.newInstance();
-                domFactory.setValidating(false);
-                domFactory.setNamespaceAware(false);
-                builder = domFactory.newDocumentBuilder();
+		// parsing the XmlUrl
+		// Document doc = parse(in);
+		Document doc = null;
+		DocumentBuilderFactory domFactory;
+		DocumentBuilder builder;
 
-                doc = builder.parse(in);
-            } catch (Exception ex) {
-                System.err.println("unable to load XML: " + ex);
-            }
-            WeatherDisplay disp = new WeatherDisplay();
-            disp.setweathergui(gui);
-            disp.getConditions(doc);
+		try {
+			domFactory = DocumentBuilderFactory.newInstance();
+			domFactory.setValidating(false);
+			domFactory.setNamespaceAware(false);
+			builder = domFactory.newDocumentBuilder();
 
-        }
-    }
+			doc = builder.parse(in);
+		} catch (Exception ex) {
+			System.err.println("unable to load XML: " + ex);
+		}
+		WeatherDisplay disp = new WeatherDisplay();
+		disp.setweathergui(gui);
+		disp.getConditions(doc);
+
+	}
+}

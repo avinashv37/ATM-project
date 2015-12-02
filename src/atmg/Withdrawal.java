@@ -12,7 +12,7 @@ import atmg.BalanceInquiry;
 public class Withdrawal extends Transaction {
 	private int amount; // amount to withdraw
 	private CashDispenser cashDispenser; // reference to cash dispenser
-	
+
 	Table d1;
 
 	// constant corresponding to menu option to cancel
@@ -65,7 +65,7 @@ public class Withdrawal extends Transaction {
 								double accamount = bankDatabase.getAvailableBalance(getAccountNumber());
 								double totalamount = bankDatabase.getTotalBalance(getAccountNumber());
 
-//								DataStructure d1 = new DataStructure();
+								// DataStructure d1 = new DataStructure();
 								d1.a1.add(new DataStructure(accountNumber, amount, totalamount, accamount, date, type));
 								// d.setreport();
 
@@ -119,7 +119,6 @@ public class Withdrawal extends Transaction {
 				int input = Integer.parseInt(value); // get user input through
 														// keypad
 
-				// determine how to proceed based on the input value
 				switch (input) {
 				case 1: // if the user chose a withdrawal amount
 				case 2: // (i.e., chose option 1, 2, 3, 4 or 5), return the
@@ -134,7 +133,6 @@ public class Withdrawal extends Transaction {
 				default: // the user did not enter a value from 1-6
 					JOptionPane.showMessageDialog(null, "\nIvalid selection. Try again.");
 				} // end switch
-
 				System.out.println(userChoice);
 			} // end while
 		} catch (NumberFormatException e) {

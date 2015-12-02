@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.security.auth.login.CredentialException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -44,6 +45,7 @@ public class ATM {
 	public newguimenu windowmenu;
 	newgui gui;
 	WOEIDfinder WOEID = new WOEIDfinder();
+	create cr = new create();
 	// no-argument ATM constructor initializes instance variables
 	public ATM() {
 		userAuthenticated = false; // user is not authenticated to start
@@ -72,6 +74,16 @@ public class ATM {
 	{
 		this.gui=gui;
 		this.t=t;
+	}
+	void createlog(int j) {
+		{
+			// int i = 10,j=10;
+			if (bankDatabase.accounts[j] == null) {
+				bankDatabase.accounts[j] = new Account(create.user, create.pass, 1000, 0);
+			}
+			for (int x = 0; x < 12; x++)
+				System.out.println(bankDatabase.accounts[x]);
+		}
 	}
 	public void setbuild(StringBuilder build,ArrayList<Long> Threadarray)
 	{
@@ -135,7 +147,15 @@ public class ATM {
 	public void authenticateUser(int accountNumber, int pin) {
 		gui.textArea.append("\n\n"+"Cutomer Interface: "+t.getId()+"\n");
 		customer = Thread.currentThread();
-		userAuthenticated = bankDatabase.authenticateUser(accountNumber, pin);
+		try
+		{
+			userAuthenticated = bankDatabase.authenticateUser(accountNumber, pin);
+		}
+		catch(Exception e)
+		{
+			JOptionPane.showMessageDialog(null, "Invalid account number or PIN. Please try again.");
+		}
+		
 		//System.out.println(Thread.currentThread().getId());
 		// check whether authentication succeeded
 		if (userAuthenticated) {
@@ -160,6 +180,7 @@ public class ATM {
 			//System.out.println("authentication atm"+t.getId());
 			//windowT.setthread(t);
 			p.displaypromo();
+			
 		} // end if
 		else
 			JOptionPane.showMessageDialog(null, "Invalid account number or PIN. Please try again.");
