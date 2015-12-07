@@ -1,17 +1,31 @@
 package atmg;
 // BankDatabase.java
 
+import java.util.ArrayList;
+
 // Represents the bank account information database 
 
 public class BankDatabase extends Thread {
 	//private Account accounts[]; // array of Accounts
-	public Account accounts[] = new Account[100];
+//	/public Account accounts[] = new Account[100];
+	public static ArrayList<Account> accounts=new ArrayList<Account>();
 	public int accountinfo;
 	Thread t;
 	// no-argument BankDatabase constructor initializes accounts
 	public BankDatabase() {
+		accounts.add(new Account(12345, 54321, 1000.0, 1200.0));
+		accounts.add(new Account(98765, 56789, 200.0, 200.0));
+		accounts.add(new Account(22222, 22222, 6200.0, 6200.0));
+		accounts.add(new Account(33333, 33333, 2500.0, 2500.0));
+		accounts.add(new Account(44444, 44444, 4200.0, 4200.0));
+		accounts.add(new Account(55555, 55555, 3200.0, 3200.0));
+		accounts.add(new Account(66666, 66666, 1200.0, 1200.0));
+		accounts.add(new Account(77777, 77777, 9200.0, 9200.0));
+		accounts.add(new Account(88888, 88888, 2500.0, 2500.0));
+		accounts.add(new Account(11111, 11111, 2000.0, 2000.0));
+		
 		 // just 2 accounts for testing
-		accounts[0] = new Account(12345, 54321, 1000.0, 1200.0);
+		/*accounts[0] = new Account(12345, 54321, 1000.0, 1200.0);
 		accounts[1] = new Account(98765, 56789, 200.0, 200.0);
 		accounts[2] = new Account(22222, 22222, 6200.0, 6200.0);
 		accounts[3] = new Account(33333, 33333, 2500.0, 2500.0);
@@ -20,7 +34,7 @@ public class BankDatabase extends Thread {
 		accounts[6] = new Account(66666, 66666, 1200.0, 1200.0);
 		accounts[7] = new Account(77777, 77777, 9200.0, 9200.0);
 		accounts[8] = new Account(88888, 88888, 2500.0, 2500.0);
-		accounts[9] = new Account(11111, 11111, 2000.0, 2000.0);
+		accounts[9] = new Account(11111, 11111, 2000.0, 2000.0);*/
 	} // end no-argument BankDatabase constructor
 
 	// retrieve Account object containing specified account number

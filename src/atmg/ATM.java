@@ -45,7 +45,7 @@ public class ATM {
 	public newguimenu windowmenu;
 	newgui gui;
 	WOEIDfinder WOEID = new WOEIDfinder();
-	create cr = new create();
+	//create cr = new create();
 	// no-argument ATM constructor initializes instance variables
 	public ATM() {
 		userAuthenticated = false; // user is not authenticated to start
@@ -75,14 +75,14 @@ public class ATM {
 		this.gui=gui;
 		this.t=t;
 	}
-	void createlog(int j) {
+	void createlog() {
 		{
 			// int i = 10,j=10;
-			if (bankDatabase.accounts[j] == null) {
-				bankDatabase.accounts[j] = new Account(create.user, create.pass, 1000, 0);
-			}
+			//if (bankDatabase.accounts.get(j) == null) {
+				bankDatabase.accounts.add(new Account(create.user, create.pass, 1000, 0));
+			//}
 			for (int x = 0; x < 12; x++)
-				System.out.println(bankDatabase.accounts[x]);
+				System.out.println(bankDatabase.accounts.get(x));
 		}
 	}
 	public void setbuild(StringBuilder build,ArrayList<Long> Threadarray)
@@ -106,6 +106,7 @@ public class ATM {
 	// start ATM
 	public void run() {
 		gui.textArea.append("thread"+t.getId()+"\n");
+	
 		Threadcount++;
 		nw = new newguilogin();
 		nw.setATM(this,gui,t);

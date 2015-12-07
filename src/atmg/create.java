@@ -25,7 +25,7 @@ public class create extends JFrame {
 	private JLabel lblUserName;
 	private JLabel lblPassword;
 	create cr;
-	ATM atm;
+	ATM atm= new ATM();
 	clickfunction click;
 	static int j = 10;
 
@@ -40,10 +40,10 @@ public class create extends JFrame {
 	void setclick(clickfunction click) {
 		this.click = click;
 	}
-	void setatm(ATM obj)
+	/*void setatm(ATM obj)
 	{
 		this.atm=obj;
-	}
+	}*/
 
 	/**
 	 * Create the frame.
@@ -70,17 +70,19 @@ public class create extends JFrame {
 		JButton btnCreate = new JButton("Create");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+				//try {
 					String TA1 = textField.getText();
 					user = Integer.parseInt(TA1);
 					String PA1 = textField.getText();
 					pass = Integer.parseInt(PA1);
-					atm.createlog(j);
-					j++;
+					System.out.println("not entered ");
+					atm.createlog();
+//					/j++;
 					cr.setVisible(false);
-				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(null, "Password and account number shoudl be integer");
-				}
+				//} catch (Exception e1) {
+					//System.err.println(e);
+					
+				//}
 			}
 		});
 		btnCreate.setBounds(172, 175, 89, 23);

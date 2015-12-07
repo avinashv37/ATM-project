@@ -9,7 +9,6 @@ public class Threading implements Runnable {
 	public static ArrayList<Long> Threadlist = new ArrayList<Long>();
 	private newgui gui;
 	ATM theATM;
-
 	public void setnewgui(newgui gui) {
 		this.gui = gui;
 	}

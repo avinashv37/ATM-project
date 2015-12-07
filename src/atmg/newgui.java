@@ -187,7 +187,7 @@ public class newgui extends JFrame {
 			if(src.equals(createlogin))
 			{
 				//cr.setatm(atm);
-				cr.setatm(atm);
+				//cr.setatm(atm);
 				cr.setVisible(true);
 				cr.setcreate(cr);
 				cr.setclick(click);
