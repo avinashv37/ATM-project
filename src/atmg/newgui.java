@@ -38,7 +38,7 @@ public class newgui extends JFrame {
 	Threading threader ;
 	TitledBorder title;
 	actionListener action;
-	ATM atm = new ATM();
+	ATM atm;
 	public static void main(String[] args) {
 		newgui tf = new newgui();
 		tf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

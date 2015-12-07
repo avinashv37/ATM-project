@@ -21,7 +21,7 @@ public class Threading implements Runnable {
 	public void run() {
 
 		System.out.println("Threading in Thread " + t.getId());
-//		/ATM theATM = new ATM();
+		ATM theATM = new ATM();
 		theATM.setgui(gui, t);
 		theATM.setbuild(build, Threadlist);
 		theATM.run();
