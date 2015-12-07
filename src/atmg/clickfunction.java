@@ -35,6 +35,7 @@ public class clickfunction {
 	static void setlogin() {
 		// gui1 gui = new gui1();
 		try {
+			
 			if (list.get(0) != null) {
 				list.get(0).textArea.setText("12345");
 				list.get(0).passwordField.setText("54321");

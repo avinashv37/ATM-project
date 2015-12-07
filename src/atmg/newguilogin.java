@@ -40,6 +40,7 @@ public class newguilogin {
 
 	public void initialize() {
 		// TODO Auto-generated method stub
+		clickfunction.list.add(this);
 		i = window.Tabs.indexOfTab("Thread: " + String.valueOf(t.getId()));
 		System.out.println(i);
 		window.Tabs.addTab("Thread: " + String.valueOf(t.getId()), gui);
